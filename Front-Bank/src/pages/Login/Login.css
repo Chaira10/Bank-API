@@ -59,3 +59,12 @@ main {
     padding: 5px;
     font-size: 1.2rem;
   }
+
+  .MsgErrorPass {
+    display: none;
+  }
+
+  .MsgErrorName {
+    display: none;
+
+  }
