@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
@@ -6,6 +6,7 @@ import "./Profile.css";
 import { getSousTransactions } from "../../Service/Mock";
 import { setFirstName, setLastName } from "../../features/dataReducer";
 import { useSelector, useDispatch } from 'react-redux';
+import { SaveProfilData } from "../../Service/apiService";
 
 
 
@@ -15,9 +16,15 @@ function Profile() {
   // Utilisez useSelector pour obtenir les informations du store
   const firstName = useSelector((state) => state.data.firstName);
   const lastName = useSelector((state) => state.data.lastName);
+  // Utilisez les états locaux pour gérer les changements en cours d'édition
+  const [editedFirstName, setEditedFirstName] = useState(firstName);
+  const [editedLastName, setEditedLastName] = useState(lastName);
   const navigate = useNavigate();
   const [accountDetails, setAccountDetails] = useState(null);
   const userId = "6568ca4f4c6092001e4cf0fe";
+  const form = useRef();
+    // Utilisez useSelector pour obtenir le token du store
+    const token = useSelector((state) => state.data.token);
   useEffect(() => {
     // Appelez la fonction pour récupérer les sous-transactions
     const fetchAccountDetails = async () => {
@@ -41,11 +48,28 @@ function Profile() {
     setEditing(true);
   };
 
-  const handleSaveClick = () => {
-    // Ici, tu peux ajouter la logique pour sauvegarder les changements
-    // par exemple, en appelant une fonction pour mettre à jour le nom et le prénom dans la base de données
-    setEditing(false);
+  const handleSaveClick = async (e) => {
+
+    e.preventDefault();
+    try {
+      const newFirstname = form.current[0].value;
+      const newLastname = form.current[1].value;
+      // Appel de la fonction pour sauvegarder les données du profil
+      const postData =  SaveProfilData(token, newFirstname, newLastname);
+  
+      // Mettre à jour le store avec les nouvelles données
+      dispatch(setFirstName(editedFirstName));
+      dispatch(setLastName(editedLastName));
+ 
+      console.log(postData,newFirstname ,newLastname);
+      // Terminer le mode édition
+      setEditing(false);
+    } catch (error) {
+      console.error("Erreur lors de la sauvegarde des données de profil :", error.message);
+      // Gérer l'erreur ici, afficher un message à l'utilisateur, par exemple
+    }
   };
+  
 
   const handleCancelClick = () => {
     // Annuler les modifications en revenant à l'affichage non éditable
@@ -64,19 +88,20 @@ function Profile() {
               <div className="text-container">
                 <h1 className="text-dark">Welcome back</h1>
               </div>
+              <form ref={form}>
               <div className="input-container">
-                <input
-                  className="prenom"
-                  type="text"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-                <input
-                  className="nom"
-                  type="text"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                />
+              <input
+                        className="prenom"
+                        type="text"
+                        value={editedFirstName}
+                        onChange={(e) => setEditedFirstName(e.target.value)}
+                      />
+                      <input
+                        className="nom"
+                        type="text"
+                        value={editedLastName}
+                        onChange={(e) => setEditedLastName(e.target.value)}
+                      />
               </div>
               <div className="btn-container">
                 <button className="save-button" onClick={handleSaveClick}>
@@ -86,6 +111,7 @@ function Profile() {
                   Cancel
                 </button>
               </div>
+              </form>
             </div>
           ) : (
             <div>
