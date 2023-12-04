@@ -4,11 +4,17 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import "./Profile.css";
 import { getSousTransactions } from "../../Service/Mock";
+import { setFirstName, setLastName } from "../../features/dataReducer";
+import { useSelector, useDispatch } from 'react-redux';
+
+
 
 function Profile() {
+  const dispatch = useDispatch();
   const [isEditing, setEditing] = useState(false);
-  const [firstName, setFirstName] = useState("Tony");
-  const [lastName, setLastName] = useState("Jarvis");
+  // Utilisez useSelector pour obtenir les informations du store
+  const firstName = useSelector((state) => state.data.firstName);
+  const lastName = useSelector((state) => state.data.lastName);
   const navigate = useNavigate();
   const [accountDetails, setAccountDetails] = useState(null);
   const userId = "6568ca4f4c6092001e4cf0fe";

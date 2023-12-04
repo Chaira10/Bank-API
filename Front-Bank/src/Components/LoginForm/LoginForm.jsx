@@ -2,15 +2,44 @@ import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GetToken } from '../../Service/apiService';
 import {useDispatch} from 'react-redux';
-import { setToken } from '../../features/dataReducer.js';
+import { setToken, setEmail, setFirstName, setLastName} from '../../features/dataReducer.js';
 
 
+    const capitalize = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      };
+      
+// Fonction pour extraire le prénom de l'adresse e-mail
+const extractFirstNameFromEmail = (email) => {
+    const atIndex = email.indexOf('@');
+    if (atIndex !== -1) {
+      const username = email.substring(0, atIndex);
+      const parts = username.split('.');
+      return capitalize(parts[0]);
+    }
+    return '';
+  };
+  
+  // Fonction pour extraire le nom de famille de l'adresse e-mail
+  const extractLastNameFromEmail = (email) => {
+    const atIndex = email.indexOf('@');
+    const dotIndex = email.lastIndexOf('.');
+  
+    if (atIndex !== -1 && dotIndex !== -1 && dotIndex > atIndex) {
+      const lastName = email.substring(atIndex + 1, dotIndex);
+      return capitalize(lastName);
+    }
+  
+    return null;
+  };
+  
 
 function LoginForm() {
     const dispatch = useDispatch()
 
     const [username, setUserName] = useState("")
     const [password, setPassword] = useState("")
+
 
     const navigate = useNavigate() 
 
@@ -22,11 +51,25 @@ function LoginForm() {
       console.log("Token Value:", tokenValue);
       // tester si la valeur du token alors se rediriger vers le profil
         if(tokenValue){
-          dispatch(setToken( tokenValue ))
+          dispatch(setToken( tokenValue ));
+          dispatch(setEmail( username));
+          // Extraire le prénom et le nom de l'adresse e-mail
+    // const firstName = extractFirstNameFromEmail(username);
+    // const lastName = extractLastNameFromEmail(username);
+    //         console.log(firstName, lastName);
+    // dispatch(setFirstName(firstName));
+    // dispatch(setLastName(lastName));
+
+    const firstName = extractFirstNameFromEmail(username);
+    const lastName = extractLastNameFromEmail(username);
+    dispatch(setFirstName(firstName));
+    dispatch(setLastName(lastName));
+
           navigate('/profile')
         }
         else console.log("token absent")
     }
+
   return (
     <div>
     <main className="main bg-dark">

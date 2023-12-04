@@ -1,9 +1,13 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import './Navbar.css';
+import { useSelector} from 'react-redux'
 
 
 function Navbar() {
+  
   const location = useLocation();
+  const firstname = useSelector(state => state.data.firstName);
+  console.log(firstname);
   return (
     <nav className="main-nav">
       <NavLink className="main-nav-logo" to="/">
@@ -28,9 +32,9 @@ function Navbar() {
           {/* Ajoute le prénom du user ici (remplace par la variable appropriée) */}
           <span className="main-nav-item">
             <i className="fa fa-user-circle"></i>
-            
+            <span> {firstname} </span>
           </span>
-          prenom user
+          
           sign out
         </div>
       ) : (
