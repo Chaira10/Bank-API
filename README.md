@@ -1,6 +1,6 @@
 # Projet 13 Argent Bank - Application Web React
 
-![Argent Bank Logo](imgReadme.png)
+![Argent Bank Logo](./Front-Bank/public/images/imgReadme.png)
 
 Utilisez une API pour un compte utilisateur bancaire avec React
 
