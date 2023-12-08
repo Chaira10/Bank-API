@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import './Navbar.css';
-import { useSelector} from 'react-redux'
+import { useSelector} from 'react-redux';
+import  LogoutButton  from '../Logout/LogoutButton';
 
 
 function Navbar() {
@@ -35,10 +36,19 @@ function Navbar() {
             <span> {firstname} </span>
           </span>
           
-          sign out
+          <LogoutButton />
         </div>
-      ) : (
-        // Ajoute d'autres conditions au besoin
+      ) : location.pathname.startsWith('/account-details/') ? (
+        <div>
+          {/* Utilisez dispatch pour mettre à jour le prénom en fonction des données utilisateur */}
+          <span className="main-nav-item">
+            <i className="fa fa-user-circle"></i>
+            <span> {firstname} </span>
+          </span>
+          
+          {/* Utilisez le composant LogoutButton pour implémenter la déconnexion */}
+          <LogoutButton />
+        </div>) : (
         <div>
           <NavLink className="main-nav-item" to="/login">
             <i className="fa fa-user-circle"></i>

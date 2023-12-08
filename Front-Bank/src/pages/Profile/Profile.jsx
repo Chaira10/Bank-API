@@ -4,9 +4,9 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import "./Profile.css";
 import { getSousTransactions } from "../../Service/Mock";
-import { setFirstName, setLastName } from "../../features/dataReducer";
+import { setFirstName, setLastName, setEmail } from "../../features/dataReducer";
 import { useSelector, useDispatch } from 'react-redux';
-import { SaveProfilData } from "../../Service/apiService";
+import { SaveProfilData, GetUserData } from "../../Service/apiService";
 
 
 
@@ -25,6 +25,26 @@ function Profile() {
   const form = useRef();
     // Utilisez useSelector pour obtenir le token du store
     const token = useSelector((state) => state.data.token);
+    // Créez une fonction asynchrone pour gérer la récupération des données utilisateur
+const fetchData = async () => {
+  try {
+    const UserData = await GetUserData();
+    dispatch(setEmail(UserData.email));
+    dispatch(setFirstName(UserData.firstName));
+    dispatch(setLastName(UserData.lastName));
+    setEditedFirstName(UserData.firstName);
+    setEditedLastName(UserData.lastName);
+  } catch (error) {
+    console.error("Erreur lors de la récupération des données utilisateur :", error.message);
+    // Gérez l'erreur ici, affichez un message à l'utilisateur, par exemple
+  }
+};
+
+// Appelez la fonction asynchrone
+fetchData();
+console.log(fetchData());
+
+
   useEffect(() => {
     // Appelez la fonction pour récupérer les sous-transactions
     const fetchAccountDetails = async () => {
@@ -55,7 +75,7 @@ function Profile() {
       const newFirstname = form.current[0].value;
       const newLastname = form.current[1].value;
       // Appel de la fonction pour sauvegarder les données du profil
-      const postData =  SaveProfilData(token, newFirstname, newLastname);
+      const postData =  SaveProfilData( newFirstname, newLastname);
   
       // Mettre à jour le store avec les nouvelles données
       dispatch(setFirstName(editedFirstName));
@@ -131,11 +151,10 @@ function Profile() {
         <div>
           <h2>Account Details</h2>
           {accountDetails ? (
-            // Affichez vos données ici, par exemple une liste
             <div>
               {accountDetails.map((account) => (
                 <section key={account.user_id}>
-                  {/* Affichez les differents comptes */}
+                  {/* Afficher les differents comptes */}
                   <div className="account">
                   <div className="account-content-wrapper">
                   <p> {account.account_checking_name}</p>

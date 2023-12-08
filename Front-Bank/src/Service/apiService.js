@@ -1,20 +1,22 @@
 import axios from "axios";
 
+export const clientHTTP = axios.create({
+    baseURL : import.meta.env.VITE_APP_API_URI,
+    headers: {
+        "Content-Type": "application/json",
+    },
+})
+
+
 export async function GetToken(email, password) {
-    const url = "http://localhost:3001/api/v1/user/login";
 
     try {
-        const response = await axios.post(
-        url,
+        const response = await clientHTTP.post(
+            "user/login",
         {
-            email: email,
-            password: password,
+            email,
+            password,
         },
-        {
-            headers: {
-            "Content-Type": "application/json",
-            },
-        }
         );
 
         const data = response.data;
@@ -34,15 +36,11 @@ export async function GetToken(email, password) {
     }
 }
 
-export async function GetUserData(token) {
-    const url = "http://localhost:3001/api/v1/user/profile";
+export async function GetUserData() {
 
     try {
-        const response = await axios.post(url, {
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-        },
+        const response = await clientHTTP.post("user/profile", {
+
         });
 
         const data = response.data;
@@ -68,24 +66,18 @@ export async function GetUserData(token) {
 }
 
 
-export async function SaveProfilData(token, NewFirstName, NewLastName) {
-    const url = 'http://localhost:3001/api/v1/user/profile';
+export async function SaveProfilData( NewFirstName, NewLastName) {
 
     try {
-        const response = await axios.put(
-        url,
+        const response = await clientHTTP.put(
+        "user/profile",
         {
             firstName: NewFirstName,
             lastName: NewLastName,
         },
-        {
-            headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-            },
-        }
+
     );
-    console.log('Token:', token);
+    // console.log('Token:', token);
     console.log('NewFirstName:', NewFirstName);
     console.log('NewLastName:', NewLastName);
     const data = response.data;
