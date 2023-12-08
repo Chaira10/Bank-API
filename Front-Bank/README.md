@@ -1,8 +1,28 @@
-# React + Vite
+# Projet 13 Argent Bank - Application Web React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Argent Bank Logo](imgReadme.png)
 
-Currently, two official plugins are available:
+Utilisez une API pour un compte utilisateur bancaire avec React
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Phase 1 : Authentification des Utilisateurs
+
+### Prérequis
+- nvm installé sur votre machine
+- Node.js installé sur votre machine
+
+### Mise en route
+1. Clonez le repo 
+2. Installez les dépendances : `npm install`
+3. Lancez l'application en mode développement backend : `npm run dev:serveur`
+4. Lancez l'application en mode développement frontend : `npm run dev - npm run serveur`
+
+### Fonctionnalités de l'application
+- Page d'accueil
+- Page de connexion
+- Page de profil
+- Gestion de l'authentification avec Redux
+
+## Phase 2 : Proposition d'API pour les Transactions
+
+### Proposition d'API (Swagger)
+- Consultez le fichier YAML [transactions-api.yaml].
