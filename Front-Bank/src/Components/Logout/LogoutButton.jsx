@@ -2,6 +2,8 @@ import { useDispatch } from 'react-redux';
 import { SetSignOut } from '../../features/dataReducer.js';
 import { useNavigate } from 'react-router-dom';
 import './LogoutButton.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faArrowRightFromBracket}  from "@fortawesome/free-solid-svg-icons";
 
 // Définition de la fonction LogoutButton
 function LogoutButton() {
@@ -18,7 +20,7 @@ function LogoutButton() {
   };
   // Rendu JSX du composant LogoutButton
   return (
-    <button className="btn-logout" onClick={handleLogout}>SignOut</button>
+    <button className="btn-logout" onClick={handleLogout}><FontAwesomeIcon icon={faArrowRightFromBracket} /> Sign Out</button>
   );
 }
 // Exportation du composant LogoutButton pour une utilisation dans d'autres fichiers

@@ -2,6 +2,8 @@ import { NavLink, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import { useSelector} from 'react-redux';
 import  LogoutButton  from '../Logout/LogoutButton';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faCircleUser}  from "@fortawesome/free-solid-svg-icons";
 
 // Définition de la fonction Navbar
 function Navbar() {
@@ -28,7 +30,7 @@ function Navbar() {
         <div>
         {/* Lien vers la page de connexion */}
           <NavLink className="main-nav-item" to="/login">
-            <i className="fa fa-user-circle"></i>
+          <FontAwesomeIcon icon={faCircleUser} />
             Sign In
           </NavLink>
         </div>
@@ -36,7 +38,7 @@ function Navbar() {
         <div>
           {/* Affichage du nom de l'utilisateur et bouton de déconnexion sur la page de profil */}
           <span className="main-nav-item">
-            <i className="fa fa-user-circle"></i>
+          <FontAwesomeIcon icon={faCircleUser} />
             <span> {firstname} </span>
           </span>
           <LogoutButton />
@@ -45,7 +47,7 @@ function Navbar() {
         <div>
           {/* Affichage du nom de l'utilisateur et bouton de déconnexion sur la page des détails du compte */}
           <span className="main-nav-item">
-            <i className="fa fa-user-circle"></i>
+          <FontAwesomeIcon icon={faCircleUser} />
             <span> {firstname} </span>
           </span>
           <LogoutButton />
@@ -53,7 +55,7 @@ function Navbar() {
         <div>
         {/* Lien vers la page de connexion pour les autres pages */}
           <NavLink className="main-nav-item" to="/login">
-            <i className="fa fa-user-circle"></i>
+          <FontAwesomeIcon icon="fa-solid fa-circle-user" />
             Sign In
           </NavLink>
         </div>
