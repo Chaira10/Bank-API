@@ -556,5 +556,31 @@
         }
       ]
     }
+  ],
+  "account": [
+    {
+      "user_id": "655f15d9e73e2e5210f67533",
+      "account_id_checking": "1234ca4f4c6103245e4cf0fe",
+      "account_checking_name": "Argent Bank Checking (x8349)",
+      "checking_balance":"$2,082.79", 
+      "account_id_saving": "5678ca4f4c6234578e4cf0fe",
+      "account_saving_name": "Argent Bank Savings (x67124)",
+      "saving_balance": "$10,928.42", 
+      "account_id_credit": "9564ca4f4c5724545e4cf0fe",
+      "account_credit_name": "Argent Bank Credit Card (x5201)",
+      "credit_balance": "$184.30"
+    },
+    {
+      "user_id": "655f15d9e73e2e5210f67534",
+      "account_id_checking": "1234ca4f4c6102145e4cf0fe",
+      "account_checking_name": "Argent Bank Checking (x8349)",
+      "checking_balance":"$2,082.79", 
+      "account_id_saving": "5678ca4f4c6234565e4cf0fe",
+      "account_saving_name": "Argent Bank Savings (x67124)",
+      "saving_balance": "$10,928.42", 
+      "account_id_credit": "9564ca4f4c5724325e4cf0fe",
+      "account_credit_name": "Argent Bank Credit Card (x5201)",
+      "credit_balance": "$184.30"
+    }
   ]
 }

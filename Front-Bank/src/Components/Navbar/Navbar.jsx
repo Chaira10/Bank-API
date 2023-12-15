@@ -55,7 +55,7 @@ function Navbar() {
         <div>
         {/* Lien vers la page de connexion pour les autres pages */}
           <NavLink className="main-nav-item" to="/login">
-          <FontAwesomeIcon icon="fa-solid fa-circle-user" />
+          <FontAwesomeIcon icon={faCircleUser} />
             Sign In
           </NavLink>
         </div>

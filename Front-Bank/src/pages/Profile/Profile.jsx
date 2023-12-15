@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import "./Profile.css";
-import { getSousTransactions } from "../../Service/Mock";
+import {  getAccount } from "../../Service/Mock";
 import { setFirstName, setLastName, setEmail, setId } from "../../features/dataReducer";
 import { useSelector, useDispatch } from 'react-redux';
 import { SaveProfilData, GetUserData } from "../../Service/apiService";
@@ -57,7 +57,7 @@ const userId = useSelector((state) => state.data.id);
     const fetchAccountDetails = async () => {
       try {
         // Appel de la fonction getSousTransactions pour obtenir les détails du compte
-        const accountDetailsData = await getSousTransactions(userId);
+        const accountDetailsData = await  getAccount(userId);
         // Mise à jour de l'état local des détails du compte
         setAccountDetails(accountDetailsData);
       } catch (error) {
@@ -70,7 +70,7 @@ const userId = useSelector((state) => state.data.id);
     // Appel de la fonction fetchAccountDetails au montage du composant ou lors des changements des dépendances
     fetchAccountDetails();
   }, [userId]); 
-
+console.log(accountDetails);
   // Gestion du clic sur le bouton d'édition
   const handleEditClick = () => {
     setEditing(true);
@@ -162,57 +162,55 @@ const userId = useSelector((state) => state.data.id);
           <h2>Account Details</h2>
           {/* Condition pour vérifier si les détails du compte sont disponibles */}
           {accountDetails ? (
-            <div>
-            {/* Parcourir les détails de chaque compte */}
-              {accountDetails.map((account) => (
-                <section key={account.user_id}>
-                {/* Section pour afficher les informations de chaque compte */}
-                  <div className="account">
-                  {/* Contenu du compte courant */}
-                  <div className="account-content-wrapper">
-                  <p> {account.account_checking_name}</p>
-                    <p> {account.checking_balance}</p>
-                    <p> Available Balance </p>
-                  </div>
-                  {/* Boutons d'action pour afficher les transactions du compte courant */}
-                    <div className="cta">
-                    <button className="transaction-button" onClick={() => navigate(`/account-details/${account.account_id_checking}`)}>View transactions</button>
-                    </div>
-                  </div>
-                  {/* Section pour afficher les informations du compte d'épargne */}
-                  <div className="account">
-                  {/* Contenu du compte d'épargne */}
-                  <div className="account-content-wrapper">
-                    <p> {account.account_saving_name}</p>
-                    <p> {account.saving_balance}</p>
-                    <p> Available Balance </p>
-                    </div>
-                    {/* Boutons d'action pour afficher les transactions du compte d'épargne */}
-                    <div className="cta">
-                    <button className="transaction-button" onClick={() => navigate(`/account-details/${account.account_id_saving}`)}>View transactions</button>
-                    </div>
-                  </div>
-                   {/* Section pour afficher les informations du compte de crédit */}
-                  <div className="account">
-                  {/* Contenu du compte de crédit */}
-                  <div className="account-content-wrapper">
-                    <p> {account.account_credit_name}</p>
-                    <p> {account.credit_balance}</p>
-                    <p> Current Balance </p>
-                    </div>
-                    {/* Boutons d'action pour afficher les transactions du compte de crédit */}
-                    <div className="cta">
-                    <button className="transaction-button" onClick={() => navigate(`/account-details/${account.account_id_credit}`)}>View transactions</button>
-                    </div>
-                  </div>
-                </section>
-              ))}
-            </div>
-          ) : (
-            // Affichez un message de chargement ou une gestion d'erreur si les données ne sont pas disponibles
-            <p>Chargement des données...</p>
-          )}
+    <div>
+      {/* Parcourir les détails de chaque compte */}
+      <section key={accountDetails.user_id}>
+        {/* Section pour afficher les informations de chaque compte */}
+        <div className="account">
+          {/* Contenu du compte courant */}
+          <div className="account-content-wrapper">
+            <p> {accountDetails.account_checking_name}</p>
+            <p> {accountDetails.checking_balance}</p>
+            <p> Available Balance </p>
+          </div>
+          {/* Boutons d'action pour afficher les transactions du compte courant */}
+          <div className="cta">
+            <button className="transaction-button" onClick={() => navigate(`/account-details/${accountDetails.account_id_checking}`)}>View transactions</button>
+          </div>
         </div>
+        {/* Section pour afficher les informations du compte d'épargne */}
+        <div className="account">
+          {/* Contenu du compte d'épargne */}
+          <div className="account-content-wrapper">
+            <p> {accountDetails.account_saving_name}</p>
+            <p> {accountDetails.saving_balance}</p>
+            <p> Available Balance </p>
+          </div>
+          {/* Boutons d'action pour afficher les transactions du compte d'épargne */}
+          <div className="cta">
+            <button className="transaction-button" onClick={() => navigate(`/account-details/${accountDetails.account_id_saving}`)}>View transactions</button>
+          </div>
+        </div>
+        {/* Section pour afficher les informations du compte de crédit */}
+        <div className="account">
+          {/* Contenu du compte de crédit */}
+          <div className="account-content-wrapper">
+            <p> {accountDetails.account_credit_name}</p>
+            <p> {accountDetails.credit_balance}</p>
+            <p> Current Balance </p>
+          </div>
+          {/* Boutons d'action pour afficher les transactions du compte de crédit */}
+          <div className="cta">
+            <button className="transaction-button" onClick={() => navigate(`/account-details/${accountDetails.account_id_credit}`)}>View transactions</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  ) : (
+    // Affichez un message de chargement ou une gestion d'erreur si les données ne sont pas disponibles
+    <p>Chargement des données...</p>
+  )}
+</div>
       </main>
       <Footer />
     </div>
