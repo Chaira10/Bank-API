@@ -137,7 +137,7 @@ paths:
           description: Unauthorized user
         500:
           description: Internal Server Error
-  /user/accounts/{accountId}/{transactionId}:
+  /user/accounts/{accountId}/transactions:
     get:
       security:
         - Bearer: []
@@ -155,22 +155,14 @@ paths:
           in: path
           required: true
           type: string
-        - name: transactionId
-          in: path
-          required: true
-          type: string
         - in: query
-          name: startRange
-          type: string
-          format: date
-          default: "01/12/2023"
-          description: Plage de dates pour obtenir les résultats - par défaut = mois en cours
+          name: month
+          type: integer
+          description:  mois en cours ( 01 à 12 )
         - in: query
-          name: endRange
-          type: string
-          format: date
-          default: "31/12/2023"
-          description: Plage de dates pour obtenir les résultats - par défaut = mois en cours
+          name: years
+          type: integer
+          description: année en cours
       responses:
         200:
           description: Succès
@@ -182,6 +174,39 @@ paths:
           description: UnAuthorized
         404:
           description: This account id does not exist
+        500:
+          description: Internal Server Error
+  /user/accounts/{accountId}/transactions/{transactionId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Accounts & Transactions
+      summary: Récupérer les détails d'une transaction
+      description: Retourne les détails d'une transaction spécifique.
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - name: transactionId
+          in: path
+          required: true
+          type: string
+          description: ID de la transaction à récupérer
+        - name: accountId
+          in: path
+          required: true
+          type: string
+          description: ID de la transaction à récupérer
+      responses:
+        200:
+          description: Succès
+          schema:
+            $ref: '#/definitions/Transaction'
+        401:
+          description: UnAuthorized
         500:
           description: Internal Server Error
     patch:
@@ -214,7 +239,6 @@ paths:
           description: UnAuthorized
         500:
           description: Internal Server Error
-  
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -310,6 +334,25 @@ definitions:
               type: number
             balance:
               type: number
+  Transaction:
+    type: object
+    properties:
+      transactionId:
+        type: string
+      description:
+        type: string
+      amount:
+        type: number
+      date:
+        type: string
+      balance:
+        type: number
+      transactionType:
+        type: string
+      category:
+        type: string
+      note:
+        type: string
   TransactionInput:
     type: object
     properties:
