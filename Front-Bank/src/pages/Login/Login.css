@@ -1,8 +1,8 @@
-main {
+/* main {
   margin: 0;
   padding: 0;
   height: 85vh;
-}
+} */
 /* .sign-in-content {
     
     box-sizing: border-box;
@@ -16,24 +16,28 @@ main {
 
   .sign-in-content {
     box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 50vh;
-    margin-top: 0;
+    background-color: white;
+    width: 300px;
+    margin: 0 auto;
+    /* display: flex; */
+    /* align-items: center;
+    justify-content: center; */
+    /* min-height: 50vh; */
+    margin-top: 3rem !important;
     /* height: 500px;  */
+    padding: 2rem;
   }
   
-  .sign-in-container {
+  /* .sign-in-container {
     text-align: center;
     max-width: 400px; 
     width: 100%;
     height: 500px;
     margin-top: 2rem;
-  }
+  } */
   
   .sign-in-icon {
-    font-size: 5rem;
+    font-size: 1rem;
   }
   
   .input-remember {
@@ -62,4 +66,11 @@ main {
 
  .error-message {
   color: red;
+ }
+
+ .bg-dark {
+  background-color: #12002b;
+  padding-top: 30px;
+  padding-bottom: 450px;
+  /* height: 45vh; */
  }

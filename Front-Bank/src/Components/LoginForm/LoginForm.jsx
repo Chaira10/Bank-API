@@ -47,7 +47,7 @@ function LoginForm() {
     <div>
       <main className="main bg-dark">
         <section className="sign-in-content">
-          <div className="sign-in-container">
+          {/* <div className="sign-in-container"> */}
             <i className="fa fa-user-circle sign-in-icon"></i>
             <h1>Sign In</h1>
             {error && <p className="error-message">{error}</p>}
@@ -85,7 +85,7 @@ function LoginForm() {
                 Sign In
               </button>
             </form>
-          </div>
+          {/* </div> */}
         </section>
       </main>
     </div>
