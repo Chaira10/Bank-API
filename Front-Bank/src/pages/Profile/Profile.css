@@ -1,14 +1,15 @@
 .bg-secondary {
-    background-color: #E0E6ED;
+    background-color: #12002b;
+    padding-bottom: 50px;
     /* margin-top: 20px; */
 }
 
 .edit-button {
-    padding: 5px 25px;
-    border: 1px solid #6458F5;
-    color: #6458F5;
+    padding: 15px 15px;
+    border: 1px solid #00bc77;
+    color: white;
     margin-right: 15px;
-    background-color: white;
+    background-color: #00bc77;
     border-radius: 5px;
     box-shadow: 2px 2px 2px #888888;
     cursor: pointer;
@@ -20,7 +21,7 @@
 }
 
 .text-dark {
-    color: black;
+    color: white;
     padding-top: 21px;
     
 }
@@ -46,11 +47,11 @@
 }
 
 .save-button {
-    padding: 5px 25px;
-    border: 1px solid #6458F5;
-    color: #6458F5;
+    padding: 15px 25px;
+    border: 1px solid #00bc77;
+    color: white;
     margin-right: 15px;
-    background-color: white;
+    background-color: #00bc77;
     border-radius: 5px;
     box-shadow: 2px 2px 2px #888888;
     cursor: pointer;
@@ -61,10 +62,10 @@
 }
 
 .cancel-button {
-    padding: 5px 25px;
-    border: 1px solid #6458F5;
-    color: #6458F5;
-    background-color: white;
+    padding: 15px 25px;
+    border: 1px solid #00bc77;
+    color: white;
+    background-color: #00bc77;
     border-radius: 5px;
     box-shadow: 2px 2px 2px #888888;
     cursor: pointer;
@@ -99,9 +100,9 @@
 
 .transaction-button {
     padding: 11px 5px;
-    border: 1px solid #6458F5;
+    border: 1px solid #00bc77;
     color: white;
-    background-color: #6458F5;
+    background-color: #00bc77;
     border-radius: 5px;
     font-weight: 500;
     cursor: pointer;
