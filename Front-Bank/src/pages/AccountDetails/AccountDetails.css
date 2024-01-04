@@ -3,7 +3,7 @@
     justify-content: center;
     align-items:center;
     margin-bottom: auto; */
-    background-color: #E0E6ED;
+    background-color: #12002b;
     /* padding-bottom: 70px; */
     /* margin-bottom: 20px; */
     height: 85vh;
@@ -43,6 +43,7 @@ font-weight: 600;
     align-items: center;
     justify-content: space-between;
 font-weight: 600;
+color: white;
 
 
 }
@@ -50,4 +51,6 @@ font-weight: 600;
 .accordion-account {
     margin-bottom: 50px;
 }
+
+
 

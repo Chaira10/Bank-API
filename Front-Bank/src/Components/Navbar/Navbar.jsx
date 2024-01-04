@@ -39,7 +39,7 @@ function Navbar() {
           {/* Affichage du nom de l'utilisateur et bouton de déconnexion sur la page de profil */}
           <span className="main-nav-item">
           <FontAwesomeIcon icon={faCircleUser} />
-            <span> {firstname} </span>
+            <span className="name"> {firstname} </span>
           </span>
           <LogoutButton />
         </div>
@@ -48,7 +48,7 @@ function Navbar() {
           {/* Affichage du nom de l'utilisateur et bouton de déconnexion sur la page des détails du compte */}
           <span className="main-nav-item">
           <FontAwesomeIcon icon={faCircleUser} />
-            <span> {firstname} </span>
+            <span className="name"> {firstname} </span>
           </span>
           <LogoutButton />
         </div>) : (

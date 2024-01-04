@@ -162,7 +162,7 @@ console.log(accountDetails);
           {/* Contenu du compte courant */}
           <div className="account-content-wrapper">
             <p> {accountDetails.account_checking_name}</p>
-            <p> {accountDetails.checking_balance}</p>
+            <p className="balance"> {accountDetails.checking_balance}</p>
             <p> Available Balance </p>
           </div>
           {/* Boutons d'action pour afficher les transactions du compte courant */}
@@ -175,7 +175,7 @@ console.log(accountDetails);
           {/* Contenu du compte d'épargne */}
           <div className="account-content-wrapper">
             <p> {accountDetails.account_saving_name}</p>
-            <p> {accountDetails.saving_balance}</p>
+            <p className="balance"> {accountDetails.saving_balance}</p>
             <p> Available Balance </p>
           </div>
           {/* Boutons d'action pour afficher les transactions du compte d'épargne */}
@@ -188,7 +188,7 @@ console.log(accountDetails);
           {/* Contenu du compte de crédit */}
           <div className="account-content-wrapper">
             <p> {accountDetails.account_credit_name}</p>
-            <p> {accountDetails.credit_balance}</p>
+            <p className="balance"> {accountDetails.credit_balance}</p>
             <p> Current Balance </p>
           </div>
           {/* Boutons d'action pour afficher les transactions du compte de crédit */}

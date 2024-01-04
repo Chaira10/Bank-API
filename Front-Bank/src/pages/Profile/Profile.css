@@ -113,3 +113,20 @@
 .transaction-button:hover {
     transform: scale(1.1);
 }
+
+.balance {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+@media (max-width: 920px) {
+    .account {
+        display: block;
+    }
+.cta {
+    width: 100% !important;
+}
+
+}

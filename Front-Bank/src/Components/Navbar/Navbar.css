@@ -39,3 +39,7 @@
     color: rgb(60, 58, 58);
     margin-right: 5px;
   }
+
+  .name {
+    font-weight: 600;
+  }
