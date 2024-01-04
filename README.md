@@ -12,13 +12,13 @@ Utilisez une API pour un compte utilisateur bancaire avec React
 - MongoDB
 
 ### Mise en route
-1. Clonez le [repo Backend](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) ci-dessous
+1. Clonez le [repo Backend](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API)
 2. Installez les dépendances : `npm install`
 3. Lancez l'application en mode développement backend : `npm run dev:server` - `npm run populate-db`
-4. Clonez le [repo Frontend](https://github.com/Chaira10/Bank-API) ci-dessous
+4. Clonez le [repo Frontend](https://github.com/Chaira10/Bank-API)
 5. Installez les dépendances : `npm install`
-6. Installez json:server npm i -g json-server
-7. Lancez l'application en mode développement frontend : `npm run dev - npm run server`
+6. Installez json:server `npm i -g json-server`
+7. Lancez l'application en mode développement frontend : `npm run dev` - `npm run server`
 
 ### Fonctionnalités de l'application
 - Page d'accueil
@@ -29,4 +29,4 @@ Utilisez une API pour un compte utilisateur bancaire avec React
 ## Phase 2 : Proposition d'API pour les Transactions
 
 ### Proposition d'API (Swagger)
-- Consultez le fichier YAML [transactions-api.yaml].
+- Consultez le fichier YAML [transactions-api.yaml](./Front-Bank/transaction-api.yml).
