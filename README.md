@@ -14,7 +14,7 @@ Utilisez une API pour un compte utilisateur bancaire avec React
 1. Clonez le repo 
 2. Installez les dépendances : `npm install`
 3. Lancez l'application en mode développement backend : `npm run dev:serveur`
-4. Lancez l'application en mode développement frontend : `npm run dev - npm run serveur`
+4. Lancez l'application en mode développement frontend : `npm run dev - npm run server`
 
 ### Fonctionnalités de l'application
 - Page d'accueil
